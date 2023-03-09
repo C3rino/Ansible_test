@@ -1,0 +1,30 @@
+---
+- name: Install apache2 with PHP
+  hosts: virtualmachines
+  become: true
+  tasks:
+    - name: Install apache2 with PHP support
+      ansible.builtin.apt:
+        name:
+          - apache2
+          - libapache2-mod-php
+        state: present
+        update_cache: "yes"
+- name: Install MariaDB
+  hosts: mariadb_servers
+  become: true
+  tasks:
+    - name: Install MariaDB
+      ansible.builtin.apt:
+        name: mariadb-server
+        state: present
+        update_cache: "yes"
+- name: Install Mysql
+  hosts: mysql_servers
+  become: true
+  tasks:
+    - name: Install Mysql
+      ansible.builtin.apt:
+        name: mysql-server
+        state: present
+        update_cache: "yes"
